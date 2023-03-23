@@ -196,6 +196,18 @@ request = CaptureRequest.new(10.25, token)
 request = CaptureRequest.new(10.25)
 request.transactionID = token
 
+## OPTIONAL
+# Pass client specific fields (invoice, trans id, etc... all optional)
+# clientInfo = {
+#   client_trans_id, client_invoice_id, client_trans_desc
+# }
+clientInfo = {
+    :client_trans_id => "123",
+    :client_invoice_id => "1234",
+    :client_trans_desc => "Sold something cool"
+}
+request.addClientInfo(clientInfo)
+
 response = request.send(client)
 # "responsecode": "00" => success
 # "responsetext" : "Transaction was successful" or error message
@@ -217,6 +229,19 @@ request = RefundRequest.new(10.25, token)
 #OR
 request = RefundRequest.new(10.25)
 request.transactionID = token
+
+## OPTIONAL
+# Pass client specific fields (invoice, trans id, etc... all optional)
+# clientInfo = {
+#   client_trans_id, client_invoice_id, client_trans_desc
+# }
+clientInfo = {
+    :client_trans_id => "123",
+    :client_invoice_id => "1234",
+    :client_trans_desc => "Sold something cool"
+}
+request.addClientInfo(clientInfo)
+
 response = request.send(client)
 # "responsecode": "00" => success
 # "responsetext" : "Transaction was successful" or error message
