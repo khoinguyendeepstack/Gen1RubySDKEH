@@ -32,7 +32,7 @@ class DeepStackClient
         # Create request (url-encoded)
         begin
             uri = URI(@url)
-            uri = URI(uri)
+            # uri = URI(uri)
             https = Net::HTTP.new(uri.host, uri.port)
             https.use_ssl = true
             req = Net::HTTP::Post.new(uri.path, init_header = headers)
