@@ -6,6 +6,7 @@ require './DeepStackSDK/lib/requests/CreateTokenRequest'
 require './DeepStackSDK/lib/requests/AuthorizationRequest'
 require './DeepStackSDK/lib/requests/RefundRequest'
 require './DeepStackSDK/lib/requests/CaptureRequest'
+require './DeepStackSDK/lib/models/PaymentInstrumentCard.rb'
 
 
 
@@ -17,7 +18,7 @@ class DeepStackClient
         @api_password = api_password
         @client_id = client_id
         @isProduction = isProduction
-        @url = isProduction ? 'https://sandbox.transactions.gpgway.com/' : 'https://sandbox.transactions.gpgway.com/'
+        @url = isProduction ? 'https://salecctxngpg.net/default.aspx' : 'https://sandbox.transactions.gpgway.com/'
         # puts @url
     end
 
@@ -27,7 +28,7 @@ class DeepStackClient
         params = params.merge({:transactiontype => action})
         params = addCredentials(params)
         params = addOptions(params, options)
-        puts params
+        # puts params
 
         # Create request (url-encoded)
         begin
