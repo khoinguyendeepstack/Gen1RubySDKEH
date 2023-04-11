@@ -109,6 +109,13 @@ clientInfo = {
 }
 request.addClientInfo(clientInfo)
 
+##Optional
+# Change AVS, ISOCurrency, ISOCountry
+# Default values: 'y', 'USD', 'USD'
+request.changeAVS("avs")
+request.changeISOCurrency("currency")
+request.changeISOCountry("country")
+
 ## Optional
 # Pass optional card holder IP address or session ID
 request.addCCIPAddress("IP.Address")
@@ -179,6 +186,13 @@ clientInfo = {
 }
 request.addClientInfo(clientInfo)
 
+##Optional
+# Change AVS, ISOCurrency, ISOCountry
+# Default values: 'y', 'USD', 'USD'
+request.changeAVS("avs")
+request.changeISOCurrency("currency")
+request.changeISOCountry("country")
+
 ## Optional
 # Pass optional card holder IP address or session ID
 request.addCCIPAddress("IP.Address")
@@ -232,6 +246,13 @@ clientInfo = {
     :client_trans_desc => "Sold something cool"
 }
 request.addClientInfo(clientInfo)
+
+##Optional
+# Change AVS, ISOCurrency, ISOCountry
+# Default values: 'y', 'USD', 'USD'
+request.changeAVS("avs")
+request.changeISOCurrency("currency")
+request.changeISOCountry("country")
 
 ## Optional
 # Pass optional card holder IP address or session ID
@@ -302,6 +323,13 @@ clientInfo = {
     :client_trans_desc => "Sold something cool"
 }
 request.addClientInfo(clientInfo)
+
+##Optional
+# Change AVS, ISOCurrency, ISOCountry
+# Default values: 'y', 'USD', 'USD'
+request.changeAVS("avs")
+request.changeISOCurrency("currency")
+request.changeISOCountry("country")
 
 ## Optional
 # Pass optional card holder IP address or session ID
