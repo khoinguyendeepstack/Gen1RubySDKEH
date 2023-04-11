@@ -71,6 +71,14 @@ class IRequest
         @options[:avs] = avs
     end
 
+    def addCCIPAddress(ipAddress)
+        @options[:CCHolderIPAddress] = ipAddress
+    end
+
+    def addDeviceSessionID(sessionID)
+        @options[:DeviceSessionID] = sessionID
+    end
+
     def changeISOCurrency(currency)
         @options[:isocurrencycode] = currency
     end
@@ -79,4 +87,7 @@ class IRequest
         @options[:isocountrycode] = country
     end
 
+    def showOptions()
+        puts @options
+    end
 end

@@ -109,6 +109,11 @@ clientInfo = {
 }
 request.addClientInfo(clientInfo)
 
+## Optional
+# Pass optional card holder IP address or session ID
+request.addCCIPAddress("IP.Address")
+request.addDeviceSessionID("SomeSessionID")
+
 response = request.send(client)
 # "responsecode": "00" => success
 # "responsetext" : "Transaction was successful" or error message
@@ -174,6 +179,11 @@ clientInfo = {
 }
 request.addClientInfo(clientInfo)
 
+## Optional
+# Pass optional card holder IP address or session ID
+request.addCCIPAddress("IP.Address")
+request.addDeviceSessionID("SomeSessionID")
+
 # "responsecode": "00" => success
 # "responsetext" : "Transaction was successful" or error message
 responseCode = response["responsecode"]
@@ -182,6 +192,131 @@ transactionType = response["transactiontype"] # Returns name of method... "auth"
 # Transaction ID used for refund/capture
 transactionID = response["anatransactionid"]
 ```
+
+### Sale (Authorizing + Capture) ###
+
+Sale with card 
+```ruby
+# Parameters
+#   Required
+#       amount: amount to authorize in dollar amount. Ex: 10.25
+#       creditCard: PaymentInstrumentCard
+request = SaleRequest.new(10.25, card)
+
+## OPTIONAL
+# Pass shipping information into request
+# shipping = {
+#   #Optional- non-filled will fill to ""
+#   first_name, last_name, address, city, zip, country, phone, email
+# }
+shipping = {
+    :first_name => "John",
+    :last_name => "Doe",
+    :address => "123 Main St",
+    :city => "Some city",
+    :zip => "12345",
+    :country => "US",
+    :phone => "1234567890",
+    :email => "someemail@gmail.com"
+}
+request.addShipping(shipping)
+
+## OPTIONAL
+# Pass client specific fields (invoice, trans id, etc... all optional)
+# clientInfo = {
+#   client_trans_id, client_invoice_id, client_trans_desc
+# }
+clientInfo = {
+    :client_trans_id => "123",
+    :client_invoice_id => "1234",
+    :client_trans_desc => "Sold something cool"
+}
+request.addClientInfo(clientInfo)
+
+## Optional
+# Pass optional card holder IP address or session ID
+request.addCCIPAddress("IP.Address")
+request.addDeviceSessionID("SomeSessionID")
+
+response = request.send(client)
+# "responsecode": "00" => success
+# "responsetext" : "Transaction was successful" or error message
+responseCode = response["responsecode"]
+responseText = response["responsetext"]
+transactionType = response["transactiontype"] # Returns name of method... "auth" in this case
+# Transaction ID used for refund/capture
+transactionID = response["anatransactionid"]
+```
+
+Sale with token 
+```ruby
+# Parameters
+#   Required
+#       amount: amount to authorize in dollar amount. Ex: 10.25
+#       creditCard: token
+request = SaleRequest.new(10.25, token)
+# Pass required billing information
+# billing = {
+#   #Required
+#       card_expiration, billing_address, billing_zip,
+#   #Optional
+#       billing_state, billing_city, billing_country
+# }
+
+billing = {
+    :card_expiration => "MMYY",
+    :billing_address => "123 Main st",
+    :billing_zip => "12345",
+    :billing_state => "CA",
+    :billing_city => "some city",
+    :billing_country => "US"
+}
+request.addBilling(billing)
+
+## OPTIONAL
+# Pass shipping information into request
+# shipping = {
+#   #Optional- non-filled will fill to ""
+#   first_name, last_name, address, city, zip, country, phone, email
+# }
+shipping = {
+    :first_name => "John",
+    :last_name => "Doe",
+    :address => "123 Main St",
+    :city => "Some city",
+    :zip => "12345",
+    :country => "US",
+    :phone => "1234567890",
+    :email => "someemail@gmail.com"
+}
+request.addShipping(shipping)
+
+## OPTIONAL
+# Pass client specific fields (invoice, trans id, etc... all optional)
+# clientInfo = {
+#   client_trans_id, client_invoice_id, client_trans_desc
+# }
+clientInfo = {
+    :client_trans_id => "123",
+    :client_invoice_id => "1234",
+    :client_trans_desc => "Sold something cool"
+}
+request.addClientInfo(clientInfo)
+
+## Optional
+# Pass optional card holder IP address or session ID
+request.addCCIPAddress("IP.Address")
+request.addDeviceSessionID("SomeSessionID")
+
+# "responsecode": "00" => success
+# "responsetext" : "Transaction was successful" or error message
+responseCode = response["responsecode"]
+responseText = response["responsetext"]
+transactionType = response["transactiontype"] # Returns name of method... "auth" in this case
+# Transaction ID used for refund/capture
+transactionID = response["anatransactionid"]
+```
+
 ### Capture with transaction ID ###
 
 Capture a transaction with that handy transaction ID that came from authorization
