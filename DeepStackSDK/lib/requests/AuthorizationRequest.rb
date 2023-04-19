@@ -11,7 +11,7 @@ class AuthorizationRequest < IRequest
         @paymentInstrument = paymentInstrument
         @options = {
             :avs => "y",
-            :isocountrycode => "USD",
+            :isocountrycode => "USA",
             :isocurrencycode => "USD"
         }
     end

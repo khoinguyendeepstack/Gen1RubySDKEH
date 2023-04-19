@@ -44,7 +44,7 @@ First create the PaymentInstrumentCard
 #       card_last_name: last name
 #       card_billing_city: billing city associated with card
 #       card_billing_state: billing state associated with card
-#       card_billing_country: billing country associated with card
+#       card_billing_country: billing country associated with card (ISO3166CountryCode) default value "USA"
 
 card = PaymentInstrumentCard.new(cardnumber, cardexpiration, cardbillingaddress, cardbillingzipcode)
 card.card_cvv = '123'
@@ -68,6 +68,18 @@ token = response["anatransactionid"]
 ```
 
 ### Authorizing transaction ###
+
+Country codes are standardized to ISO3166CountryCode format with default value being "USA"
+To change the country use
+```ruby
+request.changeISOCountry("USA")
+```
+
+Currency codes are standardized to ISO4217CurrencyCode format with default value being "USD"
+To change the currency use
+``` ruby
+request.changeISOCurrency("USD")
+```
 
 For authorizing with a credit card... it is as simple as creating the request and passing the card object and amount as parameters. For using a token, the card expiration, billing address, and billing zipcode will also need to be passed
 

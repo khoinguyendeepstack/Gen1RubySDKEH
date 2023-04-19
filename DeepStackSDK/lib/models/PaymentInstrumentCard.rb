@@ -24,7 +24,7 @@ class PaymentInstrumentCard
             "cvv" => @card_cvv ? @card_cvv : "",
             "ccbillingcity" => @card_billing_city ? @card_billing_city : "",
             "ccbillingstate" => @card_billing_state ? @card_billing_state : "",
-            "ccbillingcountry" => @card_billing_country ? @card_billing_country : ""
+            "ccbillingcountry" => @card_billing_country ? @card_billing_country : "USA"
         }.to_json
     end
 end    
