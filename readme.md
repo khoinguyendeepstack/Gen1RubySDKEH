@@ -64,7 +64,7 @@ responseCode = response["responsecode"]
 responseText = response["responsetext"]
 transactionType = response["transactiontype"] # Returns name of method... "gettoken" in this case
 # Token
-token = response["anatransactionid"]
+token = response["clienttransdescription"]
 ```
 
 ### Authorizing transaction ###
@@ -200,7 +200,7 @@ request.addClientInfo(clientInfo)
 
 ##Optional
 # Change AVS, ISOCurrency, ISOCountry
-# Default values: 'y', 'USD', 'USD'
+# Default values: 'y', 'USD', 'USA'
 request.changeAVS("avs")
 request.changeISOCurrency("currency")
 request.changeISOCountry("country")
@@ -241,7 +241,7 @@ shipping = {
     :address => "123 Main St",
     :city => "Some city",
     :zip => "12345",
-    :country => "US",
+    :country => "USA",
     :phone => "1234567890",
     :email => "someemail@gmail.com"
 }
@@ -261,7 +261,7 @@ request.addClientInfo(clientInfo)
 
 ##Optional
 # Change AVS, ISOCurrency, ISOCountry
-# Default values: 'y', 'USD', 'USD'
+# Default values: 'y', 'USD', 'USA'
 request.changeAVS("avs")
 request.changeISOCurrency("currency")
 request.changeISOCountry("country")
@@ -302,7 +302,7 @@ billing = {
     :billing_zip => "12345",
     :billing_state => "CA",
     :billing_city => "some city",
-    :billing_country => "US"
+    :billing_country => "USA"
 }
 request.addBilling(billing)
 
@@ -338,7 +338,7 @@ request.addClientInfo(clientInfo)
 
 ##Optional
 # Change AVS, ISOCurrency, ISOCountry
-# Default values: 'y', 'USD', 'USD'
+# Default values: 'y', 'USD', 'USA'
 request.changeAVS("avs")
 request.changeISOCurrency("currency")
 request.changeISOCountry("country")
