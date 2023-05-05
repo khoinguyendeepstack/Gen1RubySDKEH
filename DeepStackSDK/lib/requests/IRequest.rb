@@ -11,6 +11,7 @@ class IRequest
 
     def addPaymentInstrument(paymentInstrument, params)
         if paymentInstrument.instance_of?(PaymentInstrumentCard)
+            # puts JSON.parse(paymentInstrument.to_json)
             params.merge(JSON.parse(paymentInstrument.to_json))
         else
             params.merge({
@@ -29,7 +30,7 @@ class IRequest
             # Required fields
             :ccexp => billing[:card_expiration],
             :CCBillingAddress => billing[:billing_address],
-            :CCBillingZip => billing[:billing_zip],
+            :CCBillingZip => billing.key?[:billing_zip] ? billing.key?[:billing_zip] : "",
             # Optional fields
             :CCBillingState => billing.key?(:billing_state) ? billing[:billing_state] : "",
             :CCBillingCity => billing.key?(:billing_city) ? billing[:billing_city] : "",
