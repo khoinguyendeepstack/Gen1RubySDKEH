@@ -17,8 +17,8 @@ class PaymentInstrumentCard
             "ccnumber" => @card_number,
             "ccexp" => @card_expiration,
             "CCBillingAddress" => @card_billing_address,
-            "CCBillingZip" => @card_billing_zipcode,
-            # "CCBillingZip" => @card_billing_zipcode ? @card_billing_zipcode : "",
+            # "CCBillingZip" => @card_billing_zipcode,
+            "CCBillingZip" => @card_billing_zipcode ? @card_billing_zipcode : "",
             # Optional Fields 
             "CCHolderFirstName" => @card_first_name ? @card_first_name : "",
             "CCHolderLastName" => @card_last_name ? @card_last_name : "",
