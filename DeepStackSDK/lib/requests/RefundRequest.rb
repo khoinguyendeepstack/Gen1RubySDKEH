@@ -14,8 +14,8 @@ class RefundRequest < IRequest
 
     def send(client)
         params = {}
-        params = addTransactionID(@transactionID, params)
         params = addAmount(@amount, params)
+        params = addTransactionID(@transactionID, params)
         # puts params
         client.Send(@action, params, @options)
     end
