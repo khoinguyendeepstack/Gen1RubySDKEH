@@ -8,6 +8,7 @@ require './DeepStackSDK/lib/requests/RefundRequest'
 require './DeepStackSDK/lib/requests/CaptureRequest'
 require './DeepStackSDK/lib/models/PaymentInstrumentCard.rb'
 require './DeepStackSDK/lib/requests/SaleRequest'
+require './DeepStackSDK/lib/requests/VoidRequest'
 
 
 

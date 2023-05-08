@@ -81,6 +81,11 @@ To change the currency use
 request.changeISOCurrency("USD")
 ```
 
+AVS is enabled by default, however if you would like to turn this off use the following 
+```ruby
+request.changeAVS("n")
+```
+
 For authorizing with a credit card... it is as simple as creating the request and passing the card object and amount as parameters. For using a token, the card expiration, billing address, and billing zipcode will also need to be passed
 
 Authorizing with card
@@ -391,6 +396,19 @@ responseText = response["responsetext"]
 transactionType = response["transactiontype"] # Returns name of method... "capture" in this case
 ```
 
+### Void with transaction ID ###
+
+Void the transaction
+
+```ruby
+# Parameters
+    # Required
+    # transactionID: transaction ID from auth(can be set later)
+    request = VoidRequest.new(transactionID)
+    response = request.send(client)
+```
+
+
 ### Refund with transaction ID ###
 
 Refund with a transaction ID (very similar to capture)
@@ -400,10 +418,10 @@ Refund with a transaction ID (very similar to capture)
 #   Required
 #       amount: amount in dollar amount. Ex: 10.25
 #       transactionID: transaction ID from auth (can be set later)
-request = RefundRequest.new(10.25, token)
+request = RefundRequest.new(10.25, transactionID)
 #OR
 request = RefundRequest.new(10.25)
-request.transactionID = token
+request.transactionID = transactionID
 
 ## OPTIONAL
 # Pass client specific fields (invoice, trans id, etc... all optional)
