@@ -63,9 +63,7 @@ class IRequest
 
     # Add transaction ID for refund/capture
     def addTransactionID(transactionID, params)
-        @options = @options.merge({
-            :anatransactionid => transactionID
-        })
+        params.merge({:anatransactionid => transactionID})
     end
 
     def changeAVS(avs)

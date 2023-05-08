@@ -16,6 +16,7 @@ class CaptureRequest < IRequest
         params = {}
         params = addAmount(@amount, params)
         params = addTransactionID(@transactionID, params)
+        # puts params
         client.Send(@action, params, @options)
     end
 end

@@ -30,7 +30,6 @@ class DeepStackClient
         params = params.merge({:transactiontype => action})
         params = addCredentials(params)
         params = addOptions(params, options)
-        # puts params
 
         # Create request (url-encoded)
         begin
