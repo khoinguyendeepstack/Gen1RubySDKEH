@@ -30,7 +30,6 @@ class DeepStackClient
         params = params.merge({:transactiontype => action})
         params = addCredentials(params)
         params = addOptions(params, options)
-        # puts params
 
         # Create request (url-encoded)
         begin
@@ -71,8 +70,12 @@ class DeepStackClient
     # Request related helpers
 
     def parseResponse(response)
-        useFullResponse = response.body[0,response.body.index("\n")]
-        URI.decode_www_form(useFullResponse).to_h.to_json
+        if(response.body.index("\n"))
+            useFullResponse = response.body[0, response.body.index("\n")]
+            return URI.decode_www_form(useFullResponse).to_h.to_json
+        else
+            return URI.decode_www_form(response.body).to_h.to_json
+        end
     end
 
     def getHeaders()
